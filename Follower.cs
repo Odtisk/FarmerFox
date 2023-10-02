@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class Folower : MonoBehaviour
+public class Follower : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _viewDistance;
