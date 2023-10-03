@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(Rigidbody2D))]
 
 public class Enemy : MonoBehaviour
 {

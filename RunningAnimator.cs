@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent (typeof(SpriteRenderer))]
+[RequireComponent (typeof(Animator))]
 public class RunningAnimator : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
@@ -11,9 +13,9 @@ public class RunningAnimator : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         _isSpriteLeftOriented = _spriteRenderer.flipX;
         _lastPositionX = transform.position.x;
-        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()

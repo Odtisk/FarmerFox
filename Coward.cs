@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Coward : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,7 +13,7 @@ public class Coward : MonoBehaviour
 
     private void Awake()
     {
-        _collider = GetComponents<BoxCollider2D>()[1];
+        _collider = TryGetBoxColliderTrigger();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -33,5 +35,17 @@ public class Coward : MonoBehaviour
             int directionCoefficient = _safeDirection ? 1 : -1;
             _rigidbody.velocity = new(_speed * directionCoefficient, 0);
         }
+    }
+
+    private BoxCollider2D TryGetBoxColliderTrigger()
+    {
+        var colliders = GetComponents<BoxCollider2D>();
+
+        foreach (var collider in colliders)
+            if (collider.isTrigger)
+                return collider;
+
+        colliders[0].isTrigger = true;
+        return colliders[0];
     }
 }

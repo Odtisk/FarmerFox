@@ -8,13 +8,9 @@ public class Eagle : MonoBehaviour
 
     private readonly int IsDiving = Animator.StringToHash(nameof(IsDiving));
 
-    private void Awake()
-    {
-        transform.position = _points[0].position;
-    }
-
     private void Start()
     {
+        transform.position = _points[0].position;
         var path = ConvertTransformToVector3(_points);
         transform.DOPath(path, _duration, PathType.CatmullRom).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutBack);
     }

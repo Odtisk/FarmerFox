@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 
 public class SimpleMovement : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class SimpleMovement : MonoBehaviour
     private CapsuleCollider2D _mainCollider;
     private BoxCollider2D _footCollider;
 
-    void Start()
+    private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _mainCollider = GetComponent<CapsuleCollider2D>();
@@ -27,7 +28,7 @@ public class SimpleMovement : MonoBehaviour
         _rigidbody.gravityScale = _gravityModifier;
     }
 
-    void Update()
+    private void Update()
     {
         _moveDirection = Input.GetAxis("Horizontal");        
 
@@ -38,7 +39,7 @@ public class SimpleMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Bounds colliderBounds = _mainCollider.bounds;
         float colliderRadius = _mainCollider.size.x * 0.4f * Mathf.Abs(transform.localScale.x);
